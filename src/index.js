@@ -10,6 +10,10 @@ var argv = require('minimist')(process.argv.slice(2));
  */ 
 const TOTAL = argv['total'] || 1;
 /**
+ * Server hosts
+ */
+const HOST = argv['host'] || 'localhost';
+/**
  * Identificacor del programa de ejecución
  */
 const PREFIX =  argv['prefix'] || makePrefix();
@@ -225,7 +229,7 @@ function receiveMessage(data) {
  * @returns 
  */
 async function getFacilities(total_ws=1) {
-    const endpoint = `http://projectwebsocket.net/r/${total_ws}/`;
+    const endpoint = `http://${HOST}/r/${total_ws}/`;
     
     return new Promise((resolve, reject) => {
         request(endpoint, async function (error, response, body) {
@@ -272,7 +276,7 @@ function makePrefix(length=5) {
  * @param {String} facility id del task 
  */
 function task_adminolt_ajax(facility) {
-    const WEBSOCKET_URI = 'ws://projectwebsocket.net/ws';
+    const WEBSOCKET_URI = `ws://${HOST}/ws`;
     /*si fuera necesario crear un receiveMessageAjax  y taks_error_ajax*/
     ws4redis = WS4Redis({
         uri: `${WEBSOCKET_URI}/${facility}?subscribe-broadcast`,
