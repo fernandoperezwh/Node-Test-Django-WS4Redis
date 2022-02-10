@@ -1,6 +1,9 @@
 # Node Test Django-WS4Redis
 
+
 ## Instalación
+> Si desea trabajar con vagrant primero siga la documentación en el archivo `./docs/doc_vagrant.md` y posteriormente continue esta documentación. 
+
 Instalar las dependencias del proyecto colocandose en la raíz y ejecutar el comando.
 ```bash
 npm install
